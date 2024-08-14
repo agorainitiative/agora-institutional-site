@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  db_agora:
+      container_name: db_agora
+      image: mysql
+      command: [ "--log_bin_trust_function_creators=1", "--default-authentication-plugin=mysql_native_password"]
+      restart: always
+      environment:
+        MYSQL_DATABASE: db_agora
+        MYSQL_ROOT_PASSWORD: password_agora
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
+        log_bin_trust_function_creators: 1
+      volumes:
+        - mysql_user:/var/lib/mysql
+      ports:
+        - "3306:3306"
+  
+  adminer:
+    container_name: adminerPatFse
+    image: adminer
+    restart: always
+    ports:
+      - "8089:8080"
+
+
+#  mail:
+#    image: schickling/mailcatcher
+#    ports:
+#      - "8092:1080"
+
+  
+volumes:
+  mysql_user:
+  mysql:

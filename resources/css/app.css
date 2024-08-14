@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.association-description-container{
+    display: flex;
+    align-items: center;
+    height:100%;
+}
+
+.association-description{
+    font-size: 52px;
+    display: inline;
+    padding-right: 400px;
+}
+
+.heading {
+    font-size: 32px;
+    padding-right: 200px;
+    color: rgb(159, 159, 159);
+}
+
+.home-section {
+    display: flex;
+    margin-top: 100px;
+}
+
+.home-section p {
+    margin: 0;
+}
+
+.description-section {
+    font-size: 28px;
+    padding-bottom: 50px;
+}
+
+.activity-title {
+    font-weight:800;
+    font-weight: 22px;
+    color: rgb(131, 131, 131);
+}
+
+
+#blog-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
