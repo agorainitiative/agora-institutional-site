@@ -16,7 +16,10 @@ const Navbar = () => {
             </div>
             <div style={{ fontSize: "18px"}}>
                 <ScrollLink to="how" smooth={true} duration={700} style={{marginRight: "25px", cursor:"pointer"}}>
-                    Our work
+                    How we work
+                </ScrollLink>
+                <ScrollLink to="what" smooth={true} duration={700} style={{marginRight: "25px", cursor:"pointer"}}>
+                    What we do
                 </ScrollLink>
                 <ScrollLink to="how" smooth={true} duration={700} style={{marginRight: "25px", cursor:"pointer"}}>
                     Blog
