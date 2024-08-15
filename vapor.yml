@@ -1,0 +1,8 @@
+id: 2
+name: agora-initiative-institutional-site
+environments:
+    production:
+        build:
+            - 'composer install --no-dev'
+            - 'npm run build'
+   

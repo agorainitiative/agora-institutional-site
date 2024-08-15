@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function home()
     {
         $articles = Article::all()->toArray();
 
@@ -17,5 +17,25 @@ class HomeController extends Controller
             'canRegister' => Route::has('register'),
             'articles' => $articles, 
         ]);
+    }
+
+    public function expression()
+    {
+        return Inertia::render('Expression');
+    }
+
+    public function regulation()
+    {
+        return Inertia::render('Regulation');
+    }
+
+    public function equity()
+    {
+        return Inertia::render('Equity');
+    }
+
+    public function mentalHealth()
+    {
+        return Inertia::render('MentalHealth');
     }
 }

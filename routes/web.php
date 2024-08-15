@@ -7,8 +7,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ArticleController;
 
-Route::get('/', [HomeController::class, 'index']);
-
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/expression', [HomeController::class, 'expression'])->name('page.expression');
+Route::get('/regulation', [HomeController::class, 'regulation'])->name('page.regulation');
+Route::get('/equity', [HomeController::class, 'equity'])->name('page.equity');
+Route::get('/mental-health', [HomeController::class, 'mentalHealth'])->name('page.mentalHealth');
 Route::resource('articles', ArticleController::class);
 
 Route::get('/dashboard', function () {
@@ -36,6 +39,8 @@ Route::get('/checkout', function (Request $request) {
  
 Route::view('/checkout/success', 'checkout.success')->name('checkout-success');
 Route::view('/checkout/cancel', 'checkout.cancel')->name('checkout-cancel');
+
+
 
 
 require __DIR__.'/auth.php';
