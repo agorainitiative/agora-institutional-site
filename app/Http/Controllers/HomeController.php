@@ -38,4 +38,23 @@ class HomeController extends Controller
     {
         return Inertia::render('MentalHealth');
     }
+
+    public function mediaCenter()
+    {
+        $articles = Article::all()->toArray();
+
+        return Inertia::render('MediaCenter',[  
+            'articles' => $articles, 
+        ]);
+    }
+
+    public function takeAction()
+    {
+        return Inertia::render('TakeAction');
+    }
+
+    public function whoWeAre()
+    {
+        return Inertia::render('WhoWeAre');
+    }
 }

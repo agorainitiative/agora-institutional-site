@@ -11,7 +11,7 @@ export default function Welcome({ auth, articles }) {
             <Head title="Agorà Initiative" />
                 <HeaderPage 
                     title="Expression" 
-                    description="We believe in the immense potential of the web and social media to connect the world and improve lives with just a simple click. However, we are also acutely aware of the dangers posed by the unconscious or malicious use of these tools. Our initiative focuses on identifying and countering disinformation, misinformation, and hate speech. We actively combat these harmful narratives as they emerge by launching counteractive campaigns that provide positive messages. We aim to expose the true forces behind these manipulative campaigns to ensure that the digital space remains a place of integrity and informed decision-making."
+                    description="We believe in the immense potential of the web and social media to connect the world. However, we are also acutely aware of the dangers posed by the unconscious or malicious use of these tools. We protect users identifying and countering disinformation, misinformation, and hate speech by launching counteractive campaigns that provide positive messages. We also aim to expose the true forces behind these manipulative campaigns to ensure that the digital space remains a place of integrity and informed decision-making."
                 />
             <div style={{ padding: "100px 200px" }} className="text-black">
                 <main >

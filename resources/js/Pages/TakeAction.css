@@ -1,0 +1,62 @@
+/* TakeAction.css */
+.take-action-container {
+  display: grid;
+  grid-template-columns: 3fr 5fr; /* Dimensioni delle colonne: form a sinistra, contenuto a destra */
+  gap: 20px;
+  padding: 100px 200px;
+}
+h1{
+  margin-bottom:25px;
+}
+.left-column {
+  background-color: white; /* Sfondo per la colonna del form */
+  margin: 0 100px 50px 0;
+}
+.right-column{
+  margin-left:100px;
+}
+.title {
+  color: #003366;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height:30px;
+}
+input[type="checkbox"]{
+  margin-right: 20px;
+
+}
+.checkbox-container {
+  margin: 20px 0;
+}
+label{
+  display: block;
+  font-size: 20px;
+}
+
+.submit-btn {
+  background-color:rgb(255, 0, 0);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+
+.title{
+ text-align: left;
+}
+
+.description{
+  text-align: left;
+}

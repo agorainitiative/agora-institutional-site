@@ -13,6 +13,16 @@ class ArticleController extends Controller
 {
     protected $socialPublishingService;
 
+    
+
+    // Array delle attività
+    protected $activities = [
+        'EXPRESSION',
+        'EQUITY',
+        'ONLINE WELL BEING'
+    ];
+    protected $fillable = ['title', 'content', 'author', 'published_at', 'abstract', 'on_trending', 'activity'];
+
     public function __construct(SocialPublishingService $socialPublishingService)
     {
         $this->socialPublishingService = $socialPublishingService;
@@ -30,7 +40,8 @@ class ArticleController extends Controller
     public function create()
     {
         return Inertia::render('Article/create',[
-            'auth' => Auth::user()
+            'auth' => Auth::user(),
+            'activities' => $this->activities,
         ]);
     }
 
@@ -64,7 +75,8 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         return Inertia::render('Article/edit', [
             'article' => $article,
-            'auth' => Auth::user()
+            'auth' => Auth::user(),
+            'activities' => $this->activities,
         ]);
     }
 

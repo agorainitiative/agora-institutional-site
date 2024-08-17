@@ -7,11 +7,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ArticleController;
 
+
+
+Route::get('/who', [HomeController::class, 'whoWeAre'])->name('who-we-are');
+Route::get('/take-action', [HomeController::class, 'takeAction'])->name('take-action');
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/expression', [HomeController::class, 'expression'])->name('page.expression');
-Route::get('/regulation', [HomeController::class, 'regulation'])->name('page.regulation');
 Route::get('/equity', [HomeController::class, 'equity'])->name('page.equity');
 Route::get('/mental-health', [HomeController::class, 'mentalHealth'])->name('page.mentalHealth');
+Route::get('/media-center', [HomeController::class, 'mediaCenter'])->name('media-center');
+
 Route::resource('articles', ArticleController::class);
 
 Route::get('/dashboard', function () {

@@ -11,7 +11,7 @@ export default function Welcome({ auth, articles }) {
         <>
             <Head title="Agorà Initiative" />
             <Navbar />
-
+        
             <div style={{ padding: "0 200px" }} className="text-black">
                 <header style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
                     <div className="association-description-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -20,16 +20,19 @@ export default function Welcome({ auth, articles }) {
                         Agorà Initiative works to create a safe, positive, and democratic online environment that advocates for peace and justice in society.
                         </p>
                     </div>
-                    <h2 className="heading">Trending topic</h2>
 
-                    <section id="blog" className="flex" style={{ marginBottom: "50px"}}>
+                    <section id="blog" style={{ marginBottom: "130px"}}>
+                        <h2 className="heading ">Trending topic</h2>
+
+                        <div className="flex">
                         {articles && articles.map((article, index) => (
-                            <div key={index} className="article-item mb-8 p-4 bg-whiteå">
+                            <div key={index} className="article-item mb-8 pr-4 py-4 bg-whiteå">
                                 <h3 className="text-xl font-bold">{article.title}</h3>
-                                <p className="text-gray-800">{article.abstract}</p>
                                 <hr className="my-4" />
                             </div>
                         ))}
+                        </div>
+                        
                     </section>
                 </header>
                 <div id="how"></div>
@@ -37,7 +40,7 @@ export default function Welcome({ auth, articles }) {
                     <section className="home-section">
                         <h2 className="heading">How we work</h2>
                         <div>
-                            <p className="description-section">With an approuch based on prevention to promote an online environment where facts, dialogue, and well-being prevail over falsehoods, hate, polarization, and harmful behaviors. We adopt integrated actions that combine data analytics and communication campaigns aimed at raising public awareness about malicious organized online situation.</p>
+                            <p className="description-section">We use an approuch based on prevention to promote an online environment where facts, dialogue, and well-being prevail over falsehoods, hate, polarization, and harmful behaviors. We adopt integrated actions that combine data analytics and communication campaigns aimed at raising public awareness about malicious organized online situation.</p>
                         </div>
                     </section>
                     <div id="what"></div>
@@ -45,10 +48,10 @@ export default function Welcome({ auth, articles }) {
                         <h2 className="heading">What we do</h2>
                         <div>
                             <p className="description-section">
-                                We aim to protect users and especially vulnerable communities from organized disinformation and hate speech campaigns. We promote responsible social media use and advocate for stronger and more effective regulations for online platforms. 
+                                We protect users and especially vulnerable communities from organized disinformation and hate speech campaigns and we promote responsible social media use.
                             </p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <div  className="p-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                                <div className="p-4">
                                     <Link href={route('page.expression')}>
                                         <div className="div-box expression"></div>
                                         <h4 className="activity-title">Expression </h4>
@@ -70,23 +73,15 @@ export default function Welcome({ auth, articles }) {
                                     <p>We support vulnerable communities by enhancing social resilience, building supportive solidarity networks to improve well-being and be less exposed to organized malicious campaign always targets that exacerbates inequalities, creating a feedback loop that compromises community resilience.</p>
                                     </Link>
                                 </div>
-                                <div className="p-4">
-                                <Link href={route('page.regulation')}>
 
-                                    <div className="div-box regulation"></div>
-                                    <h4 style={{ opacity: "1"}} className="activity-title">Regulation </h4>
-                                    <p style={{ opacity: "1"}}>
-                                        We conduct scientific research on legislation and raise public awareness about the need for stricter regulation of online platforms. Our focus is on enhancing transparency and accountability in digital spaces to protect users from misinformation and harmful content while preserving freedom of expression.
-                                    </p>
-                                </ Link>
-                            </div>
-                                   
-                        </div>   
+                            </div>   
                         </div>
                     </section>
+                    
                 </main>
             </div>
             <div style={{marginTop:"150px"}}>
+
                 <Footer />
             </div>
             

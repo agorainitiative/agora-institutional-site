@@ -3,13 +3,15 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-export default function Edit({ article, auth }) {
+export default function Edit({ article, auth, activities }) {
     const { data, setData, put, processing, errors } = useForm({
         title: article.title || '',
         content: article.content || '',
         author: article.author || '',
         published_at: article.published_at || '',
         abstract: article.abstract || '',
+        on_trending: article.on_trending || false,
+        activity: article.activity || '', 
         postOnInstagram: article.postOnInstagram || false,
         instagramPostText: article.instagramPostText || '',
         instagramPostImage: article.instagramPostImage || '',
@@ -49,6 +51,33 @@ export default function Edit({ article, auth }) {
                             />
                             {errors.title && <div className="text-red-500 mt-1">{errors.title}</div>}
                         </div>
+                        <div className="mb-4">
+                        <label className="block text-gray-700">Activity</label>
+                        <select
+                            value={data.activity}
+                            onChange={e => setData('activity', e.target.value)}
+                            className="mt-1 block w-full"
+                        >
+                            <option value="">Select an activity</option>
+                            {Array.isArray(activities) && activities.length > 0 ? (
+                                activities.map(activity => (
+                                    <option key={activity} value={activity}>
+                                        {activity}
+                                    </option>
+                                ))
+                            ) : (
+                                <option value="" disabled>No activities available</option>
+                            )}
+                        </select>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">On Trending</label>
+                        <input 
+                            type="checkbox" 
+                            checked={data.on_trending} 
+                            onChange={e => setData('on_trending', e.target.checked)}
+                        />
+                    </div>
                         <div className="mb-4">
                             <label className="block text-gray-700">Content</label>
                             <CKEditor

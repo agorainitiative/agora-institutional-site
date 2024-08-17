@@ -2,7 +2,7 @@
 
 
 .div-box {
-    padding: 100px;
+    padding: 150px;
     background-color: white;
     color: black;
     border-radius: 8px;
@@ -11,9 +11,9 @@
 /* Pattern per Expression - Honeycomb */
 .expression {
     background: radial-gradient(#46e3c0 15%, transparent 16%), linear-gradient(45deg, transparent 49%, #46e3c0 49% 51%, transparent 51%), linear-gradient(-45deg, transparent 49%, #46e3c0 49% 51%, transparent 51%);
-    background-size: 3em 3em;
-    background-color: #ffffff;
-    opacity: 1;
+        background-size: 3em 3em;
+        background-color: #ffffff;
+        opacity: 1
 }
 
 /* Pattern per Online Well Being - Wave */
@@ -27,7 +27,7 @@
 
 /* Pattern per Equity - Chain Link */
 .equity {
-    background: radial-gradient(circle at top left,transparent 9%, #ffedd8 10% ,#ffedd8 15% , transparent 16%) , radial-gradient(circle at bottom left,transparent 9%, #ffedd8 10% ,#ffedd8 15% , transparent 16%), radial-gradient(circle at top right ,transparent 9%, #ffedd8 10% ,#ffedd8 15% , transparent 16%) , radial-gradient(circle at bottom right,transparent 9%, #ffedd8 10% ,#ffedd8 15% , transparent 16%),radial-gradient(circle, transparent 25%, #ffffff  26%),linear-gradient(45deg, transparent 46%, #ffedd8 47%, #ffedd8 52%, transparent 53%), linear-gradient(135deg, transparent 46%, #ffedd8 47%, #ffedd8 52%, transparent 53%);
+    background: radial-gradient(circle at top left,transparent 9%, #d0e6f8 10% ,#d0e6f8 15% , transparent 16%) , radial-gradient(circle at bottom left,transparent 9%, #d0e6f8 10% ,#d0e6f8 15% , transparent 16%), radial-gradient(circle at top right ,transparent 9%, #d0e6f8 10% ,#d0e6f8 15% , transparent 16%) , radial-gradient(circle at bottom right,transparent 9%, #d0e6f8 10% ,#d0e6f8 15% , transparent 16%),radial-gradient(circle, transparent 25%, #ffffff  26%),linear-gradient(45deg, transparent 46%, #d0e6f8 47%, #d0e6f8 52%, transparent 53%), linear-gradient(135deg, transparent 46%, #d0e6f8 47%, #d0e6f8 52%, transparent 53%);
         background-size: 3em 3em;
         background-color: #ffffff;
         opacity: 1
@@ -43,16 +43,7 @@
 
 
 /* Pattern per Regulation - Lined Paper */
-.regulation {
-    background-image: repeating-linear-gradient(
-        to bottom,
-        #d0e6f8, 
-        #d0e6f8 1px, 
-        transparent 1px, 
-        transparent 25px
-    );
-    background-size: 100% 26px;
-}
+
 
 
 .association-description-container{
@@ -71,7 +62,7 @@
     font-size: 32px;
     padding-right: 200px;
     font-weight: 800px;
-    
+    color: #a0a0a0;
 }
 
 .home-section {
@@ -105,4 +96,26 @@
 .learn-more-button{
     font-weight:800;
     padding-top: 15px;
+}
+
+.sidebar {
+    width: 300px;
+    position: fixed;
+    left: -300px;
+    top: 0;
+    bottom: 0;
+    background-color: #f4f4f4;
+    transition: left 0.5s ease;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.take-action-btn {
+    position: fixed;
+    z-index: 1010;
+    left: 20px;
+    top: 20px;
 }

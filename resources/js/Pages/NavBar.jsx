@@ -1,9 +1,16 @@
-import React from 'react';
 import { Link } from '@inertiajs/react';
-
+import Sidebar from './Sidebar';
 import { Link as ScrollLink } from 'react-scroll';
 
+import React, { useState } from 'react'; // Aggiungi questa linea
+
 const Navbar = () => {
+
+    const [isActivitiesOpen, setActivitiesOpen] = useState(false); // Stato per la tenda
+
+    const toggleActivities = () => setActivitiesOpen(!isActivitiesOpen); // Funzione per la tenda
+
+    
     return (
         <nav style={{ padding: "0 200px" }}  className="flex justify-between align-center my-5">
             <div>
@@ -15,21 +22,16 @@ const Navbar = () => {
                 </Link>
             </div>
             <div style={{ fontSize: "18px"}}>
-                <ScrollLink to="how" smooth={true} duration={700} style={{marginRight: "25px", cursor:"pointer"}}>
-                    How we work
-                </ScrollLink>
-                <ScrollLink to="what" smooth={true} duration={700} style={{marginRight: "25px", cursor:"pointer"}}>
-                    What we do
-                </ScrollLink>
-                <ScrollLink to="how" smooth={true} duration={700} style={{marginRight: "25px", cursor:"pointer"}}>
-                    Blog
-                </ScrollLink>
-                <ScrollLink to="contact" smooth={true} duration={500} style={{marginRight: "25px", cursor:"pointer"}} >
-                    Contatti
-                </ScrollLink>
+                <Link href={route('media-center')} smooth={true} duration={700} style={{marginRight: "60px", cursor:"pointer"}}>
+                    News
+                </Link>
+                <Link href={route('take-action')} smooth={true} duration={700} style={{marginRight: "0px", cursor:"pointer"}}>
+                    Take action
+                </Link>
             </div>
         </nav>
     );
 };
+
 
 export default Navbar;

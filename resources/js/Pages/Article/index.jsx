@@ -8,21 +8,21 @@ export default function Index({ articles, auth }) {
             user={auth}
         >
 			<Head title="Articles" />
-			<div className="container mx-auto px-4">
+			
+			<div className="max-w-7xl mx-auto px-4">
 				<header className="my-8 flex justify-between align-center ">
 					<h1 className="text-2xl font-bold">Articles</h1>
 					<Link href={route('articles.create')} className="text-blue-500">Create New Article</Link>
 				</header>
 				<main>
 					{articles.length > 0 ? (
-						<table className="min-w-full table-auto">
+						<table className="min-w-full table-auto border-separate border-spacing-5">
 							<thead>
 								<tr>
-									<th >Title</th>
-									<th >Abstract</th>
-									<th >Content</th>
-									<th >Author</th>
-									<th >Published On</th>
+									<th>Title</th>
+									<th>Abstract</th>
+									<th>Author</th>
+									<th>Published On</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -30,8 +30,6 @@ export default function Index({ articles, auth }) {
 									<tr key={index} className="border-b">
 										<td className="">{article.title}</td>
 										<td className="">{article.abstract}</td>
-
-										<td className="" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content) }}></td>
 										<td className="">{article.author}</td>
 										<td className="">{new Date(article.published_at).toLocaleDateString()}</td>
 										<td>

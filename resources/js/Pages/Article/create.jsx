@@ -3,13 +3,15 @@ import { Link, useForm, Head } from '@inertiajs/react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function Create(auth) {
+export default function Create({auth, activities = []}) {
     const { data, setData, post, processing, errors } = useForm({
         title: '',
         content: '',
         author: '',
         published_at: '',
-        abstract: '', // Aggiungi questo campo
+        on_trending: false,
+        abstract: '', 
+        activity: '', 
         postOnInstagram: false,
         instagramPostText: '',
         instagramPostImage: '',
@@ -31,10 +33,10 @@ export default function Create(auth) {
             user={auth}
         >
             <Head title="Create Article" />
-            <div className="container px-4">
-                <header className="my-8">
+            <div className="max-w-7xl mx-auto px-4 ">
+                <header className="my-8 flex justify-between">
                     <h1 className="text-2xl font-bold">Create New Article</h1>
-                    <Link href={route('articles.index')} className="text-blue-500">Back to Articles</Link>
+                    <Link href={route('articles.index')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Articles</Link>
                 </header>
                 <main>
                     <form onSubmit={handleSubmit} className="max-w-lg">
@@ -48,6 +50,36 @@ export default function Create(auth) {
                                 className="mt-1 block w-full"
                             />
                             {errors.title && <div className="text-red-500 mt-1">{errors.title}</div>}
+                        </div>
+                        <div>
+                    <label htmlFor="activity">Activity</label>
+                    <select
+                        id="activity"
+                        name="activity"
+                        value={data.activity}
+                        onChange={e => setData('activity', e.target.value)}
+                    >
+                        <option value="">Select an activity</option>
+                        {Array.isArray(activities) && activities.length > 0 ? (
+                            activities.map(activity => (
+                                <option key={activity} value={activity}>
+                                    {activity}
+                                </option>
+                            ))
+                        ) : (
+                            <option value="" disabled>No activities available</option>
+                        )}
+                    </select>
+                </div>
+                        <div>
+                            <label htmlFor="on_trending">On Trending</label>
+                            <input
+                                type="checkbox"
+                                id="on_trending"
+                                name="on_trending"
+                                checked={data.on_trending}
+                                onChange={e => setData('on_trending', e.target.checked)}
+                            />
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700">Content</label>
@@ -160,7 +192,7 @@ export default function Create(auth) {
                                 </div>
                             </>
                         )}
-                        <button type="submit" disabled={processing} className="btn btn-primary">
+                        <button type="submit" disabled={processing} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Submit
                         </button>
                     </form>

@@ -1,0 +1,15 @@
+/* Sidebar.css o nel CSS globale */
+.sidebar {
+    width: 300px;               /* Larghezza della sidebar */
+    position: fixed;            /* Fissa la sidebar rispetto alla viewport */
+    right: 300px;              /* Inizia fuori dalla viewport, a destra */
+    top: 0;                     /* Parte dall'alto della pagina */
+    bottom: 0;   
+    background-color: #f4f4f4;  /* Colore di sfondo della sidebar */
+    transition: right 0.5s ease;/* Transizione fluida per l'animazione */
+    z-index: 1000;              /* Assicurati che sia sopra altri contenuti */
+}
+
+.sidebar.open {
+    right: 0;                   /* Sposta la sidebar a destra a 0px dalla viewport */
+}
