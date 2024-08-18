@@ -20,17 +20,24 @@ export default function Welcome({ auth, articles }) {
                         </p>
                     </div>
 
-                    <section id="blog" style={{ marginBottom: "130px"}}>
+                    <section id="blog">
                         <h2 className="heading ">Trending topic</h2>
 
-                        <div className="flex">
+                        <div style={{ margin: "0 0 100px 0 "}} className="flex flex-wrap">
                         {articles && articles.map((article, index) => (
-                            <div key={index} className="article-item mb-8 pr-4 py-4 bg-whiteå">
-                                <Link href={route('articles.show', article.id)}>
+                            
 
+                            <div key={index} className="article-item mr-5 mb-8 pr-5 py-4 bg-white w-1/4   ">
+                                <div style={{height: "100px"} }>
+                                <Link href={route('articles.show', article.id)}>
                                     <h3 className="text-xl font-bold">{article.title}</h3>
                                 </Link>
-                                <hr className="my-4" />
+                                </div>
+                                
+                                
+                                <hr style={{border: "0.2px gray solid"} } />
+
+                            
                             </div>
                         ))}
                         </div>
