@@ -10,8 +10,13 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $articles = Article::all()->toArray();
-
+        
+        $articles = Article::where('on_trending', true)
+            ->orderBy('published_at', 'desc')
+            ->take(4)
+            ->get()
+            ->toArray();
+            
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
@@ -19,25 +24,39 @@ class HomeController extends Controller
         ]);
     }
 
-    public function expression()
+    public function mentalHealth()
     {
-        return Inertia::render('Expression');
+        // Filtra gli articoli con activity 'mental_health'
+        $articles = Article::where('activity', 'mental_health')->get()->toArray();
+
+        // Passa gli articoli filtrati al componente MentalHealth
+        return Inertia::render('MentalHealth', [
+            'articles' => $articles,
+        ]);
     }
 
-    public function regulation()
+    public function expression()
     {
-        return Inertia::render('Regulation');
+        // Filtra gli articoli con activity 'expression'
+        $articles = Article::where('activity', 'expression')->get()->toArray();
+
+        // Passa gli articoli filtrati al componente Expression
+        return Inertia::render('Expression', [
+            'articles' => $articles,
+        ]);
     }
+
 
     public function equity()
     {
-        return Inertia::render('Equity');
+        $articles = Article::where('activity', 'EQUITY')->get()->toArray();
+        return Inertia::render('Equity', [
+            'articles' => $articles,
+        ]);
     }
 
-    public function mentalHealth()
-    {
-        return Inertia::render('MentalHealth');
-    }
+   
+    
 
     public function mediaCenter()
     {

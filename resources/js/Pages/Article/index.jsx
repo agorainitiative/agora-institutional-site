@@ -16,12 +16,13 @@ export default function Index({ articles, auth }) {
 				</header>
 				<main>
 					{articles.length > 0 ? (
-						<table className="min-w-full table-auto border-separate border-spacing-5">
+						<table className="min-w-full table-auto border-separate border-spacing-5 bg-white">
 							<thead>
 								<tr>
 									<th>Title</th>
 									<th>Abstract</th>
 									<th>Author</th>
+									<th>On Trending</th> 
 									<th>Published On</th>
 								</tr>
 							</thead>
@@ -32,6 +33,7 @@ export default function Index({ articles, auth }) {
 										<td className="">{article.abstract}</td>
 										<td className="">{article.author}</td>
 										<td className="">{new Date(article.published_at).toLocaleDateString()}</td>
+										<td className="">{article.on_trending ? 'Yes' : 'No'}</td> {/* Nuova cella "On Trending" */}
 										<td>
                                             <Link href={route('articles.edit', article.id)} className="text-blue-500">Edit</Link> {/* Pulsante di modifica */}
                                         </td>

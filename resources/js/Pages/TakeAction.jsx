@@ -29,9 +29,9 @@ export default function TakeAction() {
                         <label>Mobile Number *</label>
                         <input type="tel" name="mobile" required />
                         <div className="checkbox-container">
-                            <label><input type="checkbox" name="shareMessages" />Attend an event</label>
-                            <label><input type="checkbox" name="shareMessages" />Host an event</label>
-                            <label><input type="checkbox" name="shareMessages" />Share key messaging on social media</label>
+                            <label><input type="checkbox" name="shareMessages" />Social media manager</label>
+                            <label><input type="checkbox" name="shareMessages" />Data analist</label>
+                            <label><input type="checkbox" name="shareMessages" />Community organizer</label>
                         </div>
                         <button type="submit" className="submit-btn">Put me in</button>
                     </form>

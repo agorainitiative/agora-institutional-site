@@ -41,6 +41,9 @@ export default function Welcome({articles }) {
                     {/* Icone dei social media (esempi) */}
                     <img src="path/to/facebook-icon.png" alt="Facebook" className="social-icon" />
                     <img src="path/to/instagram-icon.png" alt="Instagram" className="social-icon" />
+                    <Link href={route('articles.show', article.id)}>
+                        {article.title}
+                    </Link>
                     </div>
                     <hr />
                 </div>

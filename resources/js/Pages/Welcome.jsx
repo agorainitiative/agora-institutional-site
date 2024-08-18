@@ -1,5 +1,4 @@
 import { Link, Head } from '@inertiajs/react';
-import { Link as ScrollLink } from 'react-scroll';
 import '../../css/app.css';
 import Footer from './Footer';
 import Navbar from './NavBar';
@@ -27,7 +26,10 @@ export default function Welcome({ auth, articles }) {
                         <div className="flex">
                         {articles && articles.map((article, index) => (
                             <div key={index} className="article-item mb-8 pr-4 py-4 bg-whiteå">
-                                <h3 className="text-xl font-bold">{article.title}</h3>
+                                <Link href={route('articles.show', article.id)}>
+
+                                    <h3 className="text-xl font-bold">{article.title}</h3>
+                                </Link>
                                 <hr className="my-4" />
                             </div>
                         ))}
@@ -40,7 +42,7 @@ export default function Welcome({ auth, articles }) {
                     <section className="home-section">
                         <h2 className="heading">How we work</h2>
                         <div>
-                            <p className="description-section">We use an approuch based on prevention to promote an online environment where facts, dialogue, and well-being prevail over falsehoods, hate, polarization, and harmful behaviors. We adopt integrated actions that combine data analytics and communication campaigns aimed at raising public awareness about malicious organized online situation.</p>
+                            <p className="description-section">We use an approach based on prevention to promote an online environment where facts, dialogue, and well-being prevail over falsehoods, hate, polarization, and harmful behaviors. We adopt integrated actions that combine data analytics, communication campaigns and development programs for vulnerable communities.</p>
                         </div>
                     </section>
                     <div id="what"></div>
@@ -48,7 +50,7 @@ export default function Welcome({ auth, articles }) {
                         <h2 className="heading">What we do</h2>
                         <div>
                             <p className="description-section">
-                                We protect users and especially vulnerable communities from organized disinformation and hate speech campaigns and we promote responsible social media use.
+                                We protect users expecially vulnerable ones, from organized misinformation disinformation, hate speech campaigns and harmful online behaviors.
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                                 <div className="p-4">
@@ -66,14 +68,12 @@ export default function Welcome({ auth, articles }) {
                                     </Link>
                                 </div>
                                 <div  className="p-4">
-                                <Link href={route('page.equity')}>
-
-                                    <div className="div-box equity"></div>
-                                    <h4 className="activity-title">Equity</h4>
-                                    <p>We support vulnerable communities by enhancing social resilience, building supportive solidarity networks to improve well-being and be less exposed to organized malicious campaign always targets that exacerbates inequalities, creating a feedback loop that compromises community resilience.</p>
+                                    <Link href={route('page.equity')}>
+                                        <div className="div-box equity"></div>
+                                        <h4 className="activity-title">Equity</h4>
+                                        <p>We empower vulnerable communities, the most target group by maliscoiuse organized online campaign. We build educational, informatives and developing programs that enhance their social resilience.</p>
                                     </Link>
                                 </div>
-
                             </div>   
                         </div>
                     </section>

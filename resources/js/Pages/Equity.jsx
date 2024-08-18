@@ -2,8 +2,10 @@ import { Link, Head } from '@inertiajs/react';
 import '../../css/app.css';
 import Footer from './Footer';
 import HeaderPage from './HeaderPage';
+import SectionArticleList from './SectionArticleList';
 
 export default function Welcome({ auth, articles }) {
+    const filterKeyword = "EQUITY"; // Parola chiave per il filtro
 
     return (
         <>
@@ -35,8 +37,11 @@ export default function Welcome({ auth, articles }) {
                 <p>Secondly, fostering social resilience is crucial, as it involves building support networks and solidarity to strengthen communities. This can be achieved by encouraging dialogue and supporting educational and social programs that teach critical thinking and media literacy. When individuals feel part of a cohesive and supported community, they become less vulnerable to extremist narratives that exploit fear and isolation, and they are more empowered to take positive action to improve their communities.</p>
                 </main>
 
-                
+                <div style={{marginTop:"50px"}}>
+                    <SectionArticleList articles={articles} />
+                </div>
             </div>
+            
             <div style={{marginTop:"150px"}}>
                 <Footer />
             </div>

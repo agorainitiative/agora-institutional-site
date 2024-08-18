@@ -33,7 +33,7 @@ export default function Create({auth, activities = []}) {
             user={auth}
         >
             <Head title="Create Article" />
-            <div className="max-w-7xl mx-auto px-4 ">
+            <div className="max-w-7xl  mx-auto">
                 <header className="my-8 flex justify-between">
                     <h1 className="text-2xl font-bold">Create New Article</h1>
                     <Link href={route('articles.index')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Articles</Link>

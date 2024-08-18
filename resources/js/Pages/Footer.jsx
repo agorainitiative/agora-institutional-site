@@ -8,7 +8,7 @@ const Footer = () => {
         <>
 
 
-        <div className="donorContainer">
+        {/* <div className="donorContainer">
             <h5 className="text-3xl font-bold donorTitle">Can you help us do more?</h5>
             <div className="amountContainer">
                 <span className="amount">5</span>
@@ -18,19 +18,19 @@ const Footer = () => {
             </div>
             
 
-        </div>
+        </div> */}
         <div className="whoContainer">
-            <Link>Who we are</Link>
-            <Link>Funding and indipendence</Link>
-            <Link>Our impartiality</Link>
+            <Link href={route("who")}>Who we are</Link>
+            <Link href={route("who")}>Funding and indipendence</Link>
+            <Link href={route("who")}>Our impartiality</Link>
         </div>
         <footer className="bg-black text-white text-center text-xs p-5">
             <div style={{ padding: "10px 200px" }}>
                 
                 <div className="flex justify-between">
-                    <p style={{ fontSize: "28px", }}><span >agorà</span> <span style={{color:" rgb(159, 159, 159)"}}>initiative</span></p>
+                    <p style={{ fontSize: "28px", }}><span style={{color:"white)"}} >agorà</span> <span style={{color:" rgb(159, 159, 159)"}}>initiative</span></p>
                     <div>
-                        <p className="text-xl">We are a nonprofit fighting misinformation, extremist, hate speech and harmful online behaviors.</p>
+                        <p style={{color:"white"}} className="text-xl">We are a nonprofit fighting misinformation, extremist, hate speech and harmful online behaviors.</p>
                         <div className="mt-4 flex justify-between">
                             <div>
                                 <Link style={{ textDecoration:"underline"}}href="#" className="text-white text-sm text-decoration-underline">Privacy & Cookies Notice</Link>

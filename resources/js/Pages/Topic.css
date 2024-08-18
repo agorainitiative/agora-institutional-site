@@ -1,0 +1,89 @@
+/* Titolo della sezione notizie */
+.title-container {
+  color: #333;
+  padding: 100px 200px;
+}
+.news-title{
+  font-size: 54px;
+
+  font-weight:800;
+}
+/* Stile per ciascun articolo */
+.article {
+  background-color: #fff;
+  margin: 50px 0;
+ 
+}
+.abstract{
+  padding-right:200px;
+}
+.article h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-align:center;
+}
+
+.article p {
+  color: #666;
+}
+
+/* Divider line */
+hr {
+  margin: 20px 0;
+}
+
+.image-box {
+    width: 150px;
+    height: 150px; /* Modifica l'altezza secondo le tue esigenze */
+    background-color: #da4949;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Stile per i loghi social */
+  .social-logos {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  .social-icon {
+    width: 30px; /* Dimensione dell'icona */
+    height: 30px; /* Dimensione dell'icona */
+  }
+
+  .regulation {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        #d0e6f8, 
+        #d0e6f8 1px, 
+        transparent 1px, 
+        transparent 25px
+    );
+    background-size: 100% 26px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 4px;
+  height: 1em; /* Adatta l'altezza al font del tuo titolo */
+  background-color: black;
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: black;
+  }
+}
+*{
+  color:black;
+}

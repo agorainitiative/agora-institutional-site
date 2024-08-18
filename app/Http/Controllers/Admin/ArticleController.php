@@ -21,6 +21,7 @@ class ArticleController extends Controller
         'EQUITY',
         'ONLINE WELL BEING'
     ];
+
     protected $fillable = ['title', 'content', 'author', 'published_at', 'abstract', 'on_trending', 'activity'];
 
     public function __construct(SocialPublishingService $socialPublishingService)
@@ -42,6 +43,15 @@ class ArticleController extends Controller
         return Inertia::render('Article/create',[
             'auth' => Auth::user(),
             'activities' => $this->activities,
+        ]);
+    }
+
+    public function show($id)
+    {
+        $article = Article::findOrFail($id);
+        return Inertia::render('Topic', [
+            'article' => $article,
+            'auth' => Auth::user()
         ]);
     }
 

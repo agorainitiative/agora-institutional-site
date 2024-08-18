@@ -3,6 +3,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import '../../css/app.css';
 import Footer from './Footer';
 import HeaderPage from './HeaderPage';
+import SectionArticleList from './SectionArticleList';
 
 export default function Welcome({ auth, articles }) {
 
@@ -39,7 +40,11 @@ export default function Welcome({ auth, articles }) {
 
                 Our commitment to combating disinformation and hate speech is unwavering. Together, with the support of the community and continuous innovation in our approaches, we can ensure that the digital world remains a force for good.
                 </main>
+                <div style={{marginTop:"50px"}}>
+                    <SectionArticleList articles={articles} />
+                </div>
             </div>
+            
             <div style={{marginTop:"150px"}}>
                 <Footer />
             </div>

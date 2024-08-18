@@ -2,6 +2,7 @@ import { Link, Head } from '@inertiajs/react';
 import '../../css/app.css';
 import Footer from './Footer';
 import HeaderPage from './HeaderPage';
+import SectionArticleList from './SectionArticleList';
 
 export default function Welcome({ auth, articles }) {
 
@@ -24,7 +25,11 @@ export default function Welcome({ auth, articles }) {
 
                     Vestibulum a justo venenatis, posuere velit id, efficitur felis. Proin posuere, libero a auctor sollicitudin, ligula erat aliquet nisi, at gravida ante sapien non est. Sed auctor, nisl a ultrices ullamcorper, lorem dolor laoreet elit, ac tristique lorem lacus in risus. Nulla fermentum massa tortor, a suscipit nisi fermentum a. Cras aliquet convallis nunc eget tempus. Nulla et ligula id nisi gravida dapibus. Proin vel sagittis purus. Suspendisse potenti. Nam sagittis, tortor quis eleifend elementum, nunc mauris ullamcorper lectus, auctor semper magna dolor eget felis.</p>
                 </main>
+                <div style={{marginTop:"50px"}}>
+                    <SectionArticleList articles={articles} />
+                </div>
             </div>
+            
             <div style={{marginTop:"150px"}}>
                 <Footer />
             </div>
