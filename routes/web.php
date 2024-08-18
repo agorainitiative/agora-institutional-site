@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\ArticleController;
 
 
 
-Route::get('/who', [HomeController::class, 'whoWeAre'])->name('who-we-are');
+Route::get('/who', [HomeController::class, 'whoWeAre'])->name('who');
 Route::get('/take-action', [HomeController::class, 'takeAction'])->name('take-action');
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/expression', [HomeController::class, 'expression'])->name('page.expression');
@@ -17,7 +17,7 @@ Route::get('/equity', [HomeController::class, 'equity'])->name('page.equity');
 Route::get('/mental-health', [HomeController::class, 'mentalHealth'])->name('page.mentalHealth');
 Route::get('/media-center', [HomeController::class, 'mediaCenter'])->name('media-center');
 
-Route::resource('articles', ArticleController::class);
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('articles', ArticleController::class);
+
 });
 
 
