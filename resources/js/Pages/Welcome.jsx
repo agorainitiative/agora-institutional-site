@@ -1,51 +1,64 @@
+import React, { useState } from 'react';
 import { Link, Head } from '@inertiajs/react';
 import '../../css/app.css';
-import Footer from './Footer';
 import Navbar from './NavBar';
 import './Welcome.css';
 
 export default function Welcome({ auth, articles }) {
+    const [isNavVisible, setIsNavVisible] = useState(false);
+
+    const toggleNav = () => {
+        setIsNavVisible(!isNavVisible);
+    };
+
+    const closeNav = () => {
+        setIsNavVisible(false);
+    };
 
     return (
         <>
             <Head title="Agorà Initiative" />
-            <Navbar />
-        
-            <div style={{ padding: "0 200px" }} className="text-black">
-                <header style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-                    <div className="association-description-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        
-                        <p className="association-description">
-                        Agorà Initiative works to create a safe, positive, and democratic online environment that advocates for peace and justice in society.
-                        </p>
+            <div style={{ height: "100vh", width:"100vw", position: "relative" }}>
+                <button onClick={toggleNav} style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    zIndex: 10
+                }}>
+                    <div style={{ width: "30px", height: "3px", backgroundColor: "black", margin: "6px 0" }}></div>
+                    <div style={{ width: "30px", height: "3px", backgroundColor: "black", margin: "6px 0" }}></div>
+                    <div style={{ width: "30px", height: "3px", backgroundColor: "black", margin: "6px 0" }}></div>
+                </button>
+
+                {articles && articles.map((article, index) => (
+                    <div key={index} style={{ height: '100px', width: '100px' }}>
+                        <Link href={route('articles.show', article.id)}>
+                            <h3 className="text-xl font-bold">{article.title}</h3>
+                        </Link>
                     </div>
+                ))}
 
-                    <section id="blog">
-                        <h2 className="heading ">Trending topic</h2>
-
-                        <div style={{ margin: "0 0 100px 0 "}} className="flex flex-wrap">
-                        {articles && articles.map((article, index) => (
-                            
-
-                            <div key={index} className="article-item mr-5 mb-8 pr-5 py-4 bg-white w-1/4   ">
-                                <div style={{height: "100px"} }>
-                                <Link href={route('articles.show', article.id)}>
-                                    <h3 className="text-xl font-bold">{article.title}</h3>
-                                </Link>
-                                </div>
-                                
-                                
-                                <hr style={{border: "0.2px gray solid"} } />
-
-                            
-                            </div>
-                        ))}
-                        </div>
-                        
-                    </section>
-                </header>
-                <div id="how"></div>
-                <main className="mt-6">
+                {isNavVisible && (
+                    <div style={{
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        zIndex: 20,
+                        display: "flex",
+                        backgroundColor: "white", 
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}>
+                        <Navbar closeNav={closeNav} />
+                    </div>
+                )}
+            </div>
+                {/* <main className="mt-6">
                     <section className="home-section">
                         <h2 className="heading">How we work</h2>
                         <div>
@@ -85,12 +98,7 @@ export default function Welcome({ auth, articles }) {
                         </div>
                     </section>
                     
-                </main>
-            </div>
-            <div style={{marginTop:"150px"}}>
-
-                <Footer />
-            </div>
+                </main> */}
             
         </>
     );

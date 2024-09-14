@@ -32,7 +32,7 @@ export default function Create({auth, activities = []}) {
         <AuthenticatedLayout
             user={auth}
         >
-            <Head title="Create Article" />
+            <Head title="Create Project" />
             <div className="max-w-7xl  mx-auto">
                 <header className="my-8 flex justify-between">
                     <h1 className="text-2xl font-bold">Create New Article</h1>

@@ -15,7 +15,6 @@ class AddOnTrendingAndActivityToArticlesTable extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
             $table->boolean('on_trending')->default(false);
-            $table->string('activity')->nullable();
         });
     }
 
@@ -28,7 +27,6 @@ class AddOnTrendingAndActivityToArticlesTable extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
             $table->dropColumn('on_trending');
-            $table->dropColumn('activity');
         });
     }
 }

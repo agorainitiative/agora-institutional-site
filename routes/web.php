@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Admin\ArticleController;
 
 
@@ -28,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('articles', ArticleController::class)->except('show');
-
+    Route::resource('projects', ProjectController::class)->except('show','index');
 });
 
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('articles.show');

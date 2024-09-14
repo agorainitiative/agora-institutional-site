@@ -19,7 +19,6 @@ export default function Authenticated({ user, header, children }) {
                                     <span>a</span> 
                                     <span style={{color:" rgb(159, 159, 159)"}}>i</span>
                                     <span style={{}}>   dashboard</span>
-
                                 </p>                            
                             </div>
 
@@ -30,7 +29,9 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('articles.index')} active={route().current('articles.index')}>
                                     Articoli
                                 </NavLink>
-                                
+                                <NavLink href={route('articles.index')} active={route().current('project.index')}>
+                                    Progetti
+                                </NavLink>
                             </div>
                         </div>
 

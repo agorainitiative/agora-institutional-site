@@ -1,4 +1,4 @@
-<?php
+php artisan migrate --path=/database/migrations/2024_07_25_091201_create_customer_columns.php<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
