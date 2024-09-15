@@ -1,48 +1,58 @@
 import DOMPurify from 'dompurify';
-import { Link, Head } from '@inertiajs/react';
+import { Link, Head, useForm } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-export default function Index({ articles, auth }) {
+export default function Index({ projects, auth }) {
+
+	const { delete: destroy } = useForm();
+
+    const handleDelete = (id) => {
+        if (confirm('Are you sure you want to delete this project?')) {
+            destroy(route('projects.destroy', id));
+        }
+    };
+	
 	return (
 		<AuthenticatedLayout
             user={auth}
         >
-			<Head title="Articles" />
+			<Head title="Projects" />
 			
 			<div className="max-w-7xl mx-auto px-4">
 				<header className="my-8 flex justify-between align-center ">
-					<h1 className="text-2xl font-bold">Articles</h1>
-					<Link href={route('articles.create')} className="text-blue-500">Create New Article</Link>
+					<h1 className="text-2xl font-bold">Projects</h1>
+					<Link href={route('projects.create')} className="text-blue-500">Create New Project</Link>
 				</header>
 				<main>
-					{articles.length > 0 ? (
+					{projects.length > 0 ? (
 						<table className="min-w-full table-auto border-separate border-spacing-5 bg-white">
 							<thead>
 								<tr>
-									<th>Title</th>
-									<th>Abstract</th>
-									<th>Author</th>
-									<th>On Trending</th> 
-									<th>Published On</th>
+								<th className="text-left w-2/5">Title</th> 
+								<th className="text-left w-2/5">Author</th> 
+								<th className="text-left w-1/5">Actions</th> 
 								</tr>
 							</thead>
 							<tbody>
-								{articles.map((article, index) => (
+								{projects.map((project, index) => (
 									<tr key={index} className="border-b">
-										<td className="">{article.title}</td>
-										<td className="">{article.abstract}</td>
-										<td className="">{article.author}</td>
-										<td className="">{new Date(article.published_at).toLocaleDateString()}</td>
-										<td className="">{article.on_trending ? 'Yes' : 'No'}</td> {/* Nuova cella "On Trending" */}
+										<td >{project.name}</td>
+										<td>{project.description}</td>
 										<td>
-                                            <Link href={route('articles.edit', article.id)} className="text-blue-500">Edit</Link> {/* Pulsante di modifica */}
+                                            <Link href={route('projects.edit', project.id)} className="text-blue-500 mr-3">Edit</Link> 
                                         </td>
+										<button
+											onClick={() => handleDelete(project.id)}
+											className="text-red-500"
+										>
+											Delete
+										</button>
 									</tr>
 								))}
 							</tbody>
 						</table>
 					) : (
-						<p>No articles available.</p>
+						<p>No projects available.</p>
 					)}
 				</main>
 			</div>

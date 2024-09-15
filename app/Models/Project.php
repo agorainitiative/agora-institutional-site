@@ -9,8 +9,19 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description'];
+
     public function activity()
     {
         return $this->morphOne(Activity::class, 'activitable');
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($project) {
+            $project->activity()->create([
+                'on_evidence' => false, 
+            ]);
+        });
     }
 }

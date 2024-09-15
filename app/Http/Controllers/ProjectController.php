@@ -1,63 +1,73 @@
 <?php
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
     public function index()
     {
         $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        return Inertia::render('Project/index', [
+            'projects' => $projects,
+            'auth' => Auth::user()
+        ]);
     }
 
     public function create()
     {
-        return view('projects.create');
+        return Inertia::render('Project/create',[
+            'auth' => Auth::user(),
+        ]);
+    }
+
+    public function show($id)
+    {
+        $project = Project::findOrFail($id);
+        return Inertia::render('Project/show', [
+            'project' => $project,
+            'auth' => Auth::user()
+        ]);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);        
+
+        Project::create($validatedData);
+        return redirect()->route('projects.index');
+    }
+
+    public function edit($id)
+    {
+        $project = Project::findOrFail($id);
+        return Inertia::render('Project/edit', [
+            'project' => $project,
+            'auth' => Auth::user(),
         ]);
-
-        Project::create($request->all());
-
-        return redirect()->route('projects.index')
-            ->with('success', 'Project created successfully.');
     }
 
-    public function show(Project $project)
-    {
-        return view('projects.show', compact('project'));
-    }
-
-    public function edit(Project $project)
-    {
-        return view('projects.edit', compact('project'));
-    }
-
-    public function update(Request $request, Project $project)
+    function update(Request $request, Project $project)
     {
         $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
         ]);
-
         $project->update($request->all());
-
-        return redirect()->route('projects.index')
-                         ->with('success', 'Project updated successfully.');
+        return redirect()->route('projects.index');
     }
 
-    public function destroy(Project $project)
+    public function destroy($id)
     {
+        $project = Project::findOrFail($id);
         $project->delete();
 
-        return redirect()->route('projects.index')
-                         ->with('success', 'Project deleted successfully.');
+        return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
     }
 }
