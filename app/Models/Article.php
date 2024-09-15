@@ -10,11 +10,20 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'author', 'published_at', 'abstract', 'on_trending', 'activity'];
+    protected $fillable = ['title', 'content', 'author', 'published_at', 'abstract'];
 
     public function activity()
     {
         return $this->morphOne(Activity::class, 'activitable');
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($article) {
+            $article->activity()->create([
+                'on_evidence' => false, 
+            ]);
+        });
     }
 
 }

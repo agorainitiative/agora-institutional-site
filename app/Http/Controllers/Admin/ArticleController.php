@@ -7,27 +7,9 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Services\SocialPublishingService;
 
 class ArticleController extends Controller
 {
-    protected $socialPublishingService;
-
-    
-
-    // Array delle attività
-    protected $activities = [
-        'EXPRESSION',
-        'EQUITY',
-        'ONLINE WELL BEING'
-    ];
-
-    protected $fillable = ['title', 'content', 'author', 'published_at', 'abstract', 'on_trending', 'activity'];
-
-    public function __construct(SocialPublishingService $socialPublishingService)
-    {
-        $this->socialPublishingService = $socialPublishingService;
-    }
 
     public function index()
     {
@@ -42,7 +24,6 @@ class ArticleController extends Controller
     {
         return Inertia::render('Article/create',[
             'auth' => Auth::user(),
-            'activities' => $this->activities,
         ]);
     }
 
@@ -57,27 +38,19 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'author' => 'required|string|max:255',
-            'published_at' => 'required|date',
-            'postOnFacebook' => 'boolean',
-            'postOnLinkedIn' => 'boolean',
-            'postOnInstagram' => 'boolean'
+            'abstract' => 'nullable|string',
+            
         ]);
+        $validatedData['author'] = Auth::user()->name;
+        $validatedData['published_at'] = now();
 
-        if ($request->input('postOnFacebook')) {
-            $this->socialPublishingService->postOnFacebook($request->input('facebookPostText'), $request->input('facebookPostImage'));
-        }
-        if ($request->input('postOnLinkedIn')) {
-            $this->socialPublishingService->postOnLinkedIn($request->input('linkedInPostText'), $request->input('linkedInPostImage'));
-        }
-        if ($request->input('postOnInstagram')) {
-            $this->socialPublishingService->postOnInstagram($request);
-        }
+        Article::create($validatedData);
 
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('success', 'Article created successfully.');
     }
 
     public function edit($id)
@@ -86,7 +59,6 @@ class ArticleController extends Controller
         return Inertia::render('Article/edit', [
             'article' => $article,
             'auth' => Auth::user(),
-            'activities' => $this->activities,
         ]);
     }
 
@@ -98,27 +70,19 @@ class ArticleController extends Controller
             'author' => 'required|string|max:255',
             'published_at' => 'required|date',
             'abstract' => 'nullable|string',
-            'postOnFacebook' => 'boolean',
-            'postOnLinkedIn' => 'boolean',
-            'postOnInstagram' => 'boolean'
+
         ]);
         $article->update($request->all());
-        
-        if ($request->input('postOnFacebook')) {
-            $this->socialPublishingService->postOnFacebook($request->input('facebookPostText'), $request->input('facebookPostImage'));
-        }
-        if ($request->input('postOnLinkedIn')) {
-            $this->socialPublishingService->postOnLinkedIn($request->input('linkedInPostText'), $request->input('linkedInPostImage'));
-        }
-        if ($request->input('postOnInstagram')) {
-            $this->socialPublishingService->postOnInstagram($request);
-        }
-
         return redirect()->route('articles.index');
-        
     }
 
 
+    public function destroy($id)
+    {
+        $article = Article::findOrFail($id);
+        $article->delete();
 
+        return redirect()->route('articles.index')->with('success', 'Article deleted successfully.');
+    }
 }
 
