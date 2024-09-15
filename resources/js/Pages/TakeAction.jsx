@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/react';
 import Navbar from './NavBar';
 import Footer from './Footer';
 import './TakeAction.css';  // Assicurati che il percorso del file CSS sia corretto
-import './Welcome.css';  // Assicurati che il percorso del file CSS sia corretto
+import './Home.css';  // Assicurati che il percorso del file CSS sia corretto
 
 export default function TakeAction() {
     return (

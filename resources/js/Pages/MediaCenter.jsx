@@ -5,7 +5,7 @@ import Footer from './Footer';
 import Navbar from './NavBar';
 import './MediaCenter.css';
 
-export default function Welcome({articles }) {
+export default function Home({articles }) {
 
     return (
         <>

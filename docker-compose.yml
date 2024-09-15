@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  db_agora:
-      container_name: db_agora
+  db_luuminet:
+      container_name: db_luuminet
       image: mysql
       command: [ "--log_bin_trust_function_creators=1", "--default-authentication-plugin=mysql_native_password"]
       restart: always
       environment:
-        MYSQL_DATABASE: db_agora
+        MYSQL_DATABASE: db_luuminet
         MYSQL_ROOT_PASSWORD: password_agora
         MYSQL_USER: user
         MYSQL_PASSWORD: password
@@ -18,19 +18,12 @@ services:
         - "3306:3306"
   
   adminer:
-    container_name: adminerPatFse
+    container_name: adminerLumminet
     image: adminer
     restart: always
     ports:
       - "8089:8080"
 
-
-#  mail:
-#    image: schickling/mailcatcher
-#    ports:
-#      - "8092:1080"
-
-  
 volumes:
   mysql_user:
   mysql:

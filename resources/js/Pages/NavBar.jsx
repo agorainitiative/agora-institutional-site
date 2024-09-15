@@ -8,31 +8,29 @@ const Navbar = ({ closeNav }) => {
 
     return (
         <nav style={{ padding: "0 200px", position: "relative" }} className="flex justify-center align-center">
-
-            <div style={{ fontSize: "18px"}}>
-                <ul>
-                    <li>
-                        <Link href={route('media-center')} smooth={true} duration={700} style={{marginRight: "60px", cursor:"pointer"}}>
+            <div style={{ fontSize: "24px", textAlign: "center" }}>
+                <ul style={{ listStyleType: "none", padding: 0 }}>
+                    <li style={{ marginBottom: "20px" }}>
+                        <Link href={route('media-center')} smooth={true} duration={700} style={{ marginRight: "60px", cursor: "pointer" }}>
                             Portfolio
                         </Link>
                     </li>
-                    <li>
-                        <Link href={route('media-center')} smooth={true} duration={700} style={{marginRight: "60px", cursor:"pointer"}}>
-                        Manifesto
+                    <li style={{ marginBottom: "20px" }}>
+                        <Link href={route('media-center')} smooth={true} duration={700} style={{ marginRight: "60px", cursor: "pointer" }}>
+                            Manifesto
                         </Link>
                     </li>
-                    <li>
-                        <Link href={route('take-action')} smooth={true} duration={700} style={{marginRight: "0px", cursor:"pointer"}}>
-                        Team
+                    <li style={{ marginBottom: "20px" }}>
+                        <Link href={route('take-action')} smooth={true} duration={700} style={{ marginRight: "0px", cursor: "pointer" }}>
+                            Team
                         </Link>
                     </li>
-                    <li>
-                        <Link href={route('take-action')} smooth={true} duration={700} style={{marginRight: "0px", cursor:"pointer"}}>
-                        Blueprint of a Positive Internet
+                    <li style={{ marginBottom: "20px" }}>
+                        <Link href={route('take-action')} smooth={true} duration={700} style={{ marginRight: "0px", cursor: "pointer" }}>
+                            Blueprint of a transparent Internet
                         </Link>
                     </li>
                 </ul>
-                
             </div>
             <button onClick={closeNav} style={{
                 position: "fixed", 
