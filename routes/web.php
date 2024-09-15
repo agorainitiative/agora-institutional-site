@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\ArticleController;
 
 
-
+Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/who', [HomeController::class, 'whoWeAre'])->name('who');
 Route::get('/take-action', [HomeController::class, 'takeAction'])->name('take-action');
-Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/expression', [HomeController::class, 'expression'])->name('page.expression');
-Route::get('/equity', [HomeController::class, 'equity'])->name('page.equity');
-Route::get('/mental-health', [HomeController::class, 'mentalHealth'])->name('page.mentalHealth');
 Route::get('/media-center', [HomeController::class, 'mediaCenter'])->name('media-center');
 
 
@@ -30,7 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('articles', ArticleController::class)->except('show');
-    Route::resource('projects', ProjectController::class)->except('show','index');
+    Route::resource('projects', ProjectController::class)->except('show');
+    Route::patch('/activity/{id}', [ActivityController::class, 'update'])->name('activity.update');
+    Route::get('/activity/{id}/edit', [ActivityController::class, 'edit'])->name('activity.edit');
 });
 
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('articles.show');
