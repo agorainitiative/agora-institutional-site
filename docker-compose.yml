@@ -8,7 +8,7 @@ services:
       restart: always
       environment:
         MYSQL_DATABASE: db_luuminet
-        MYSQL_ROOT_PASSWORD: password_agora
+        MYSQL_ROOT_PASSWORD: root
         MYSQL_USER: user
         MYSQL_PASSWORD: password
         log_bin_trust_function_creators: 1
