@@ -12,12 +12,12 @@ class HomeController extends Controller
     public function home()
     {
         
-        $activities = Activity::with(['activitable'])->where('on_evidence', true)->get();
-            
+        $onEvidenceActivities = Activity::with(['activitable'])->where('on_evidence', true)->get();
+        
         return Inertia::render('Home/Home', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'activities' => $activities
+            'onEvidenceActivities' => $onEvidenceActivities
         ]);
     }
 

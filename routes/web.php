@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/activity/{id}/edit', [ActivityController::class, 'edit'])->name('activity.edit');
 });
 
-Route::get('/article/{id}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::get('/checkout', function (Request $request) {
     $stripePriceId = 'price_deluxe_album';

@@ -4,7 +4,7 @@ import { Link, Head } from '@inertiajs/react';
 import Navbar from '../NavBar';
 import './Home.css';
 
-export default function Home({ auth, articles }) {
+export default function Home({ auth, onEvidenceActivities }) {
     const [isNavVisible, setIsNavVisible] = useState(false);
 
     const toggleNav = () => {
@@ -18,7 +18,7 @@ export default function Home({ auth, articles }) {
     return (
         <>
             <Head title="Agorà Initiative" />
-            <div style={{ height: "100vh", width:"100vw", position: "relative" }}>
+            <div style={{ position: "relative" }}>
                 <button onClick={toggleNav} style={{
                     position: "absolute",
                     top: "10px",
@@ -32,9 +32,6 @@ export default function Home({ auth, articles }) {
                     <div style={{ width: "30px", height: "3px", backgroundColor: "black", margin: "6px 0" }}></div>
                     <div style={{ width: "30px", height: "3px", backgroundColor: "black", margin: "6px 0" }}></div>
                 </button>
-
-                
-
                 {isNavVisible && (
                     <div style={{
                         position: "fixed",
@@ -52,7 +49,25 @@ export default function Home({ auth, articles }) {
                     </div>
                 )}
             </div>
-            
+            <div>
+                {onEvidenceActivities.map(activity => (
+                    <div key={activity.id} style={{ width: "100vw", height: "100vh", position: "relative" }}>
+                        <h3>{activity.name}</h3>
+                        {activity.activitable_type === 'App\\Models\\Article' && activity.activitable && (
+                            <Link href={`/articles/${activity.activitable.id}`} style={{ position: "absolute", bottom: "150px", left: "150px", textDecoration: "none", color: "inherit" }}>
+                                <h1 style={{ fontSize: "38px", textTransform: "uppercase" }}>{activity.activitable.title}</h1>
+                                <p style={{ fontSize: "22px" }}>{activity.activitable.abstract}</p>
+                            </Link>
+                        )}
+                        {activity.activitable_type === 'App\\Models\\Project' && activity.activitable && (
+                            <div style={{ position: "absolute", bottom: "150px", left: "150px" }}>
+                                <h1 style={{ fontSize: "38px", textTransform: "uppercase" }}>{activity.activitable.name}</h1>
+                                <p>{activity.activitable.description}</p>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
         </>
     );
 }
