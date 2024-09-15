@@ -66,14 +66,6 @@ export default function Edit({ article, auth }) {
                                 
                             />
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700">On Trending</label>
-                            <input 
-                                type="checkbox" 
-                                checked={data.on_trending} 
-                                onChange={e => setData('on_trending', e.target.checked)}
-                            />
-                        </div>
                         <button type="submit" disabled={processing} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Submit
                         </button>
