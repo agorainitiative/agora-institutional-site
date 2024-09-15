@@ -15,10 +15,8 @@ export default function Authenticated({ user, header, children }) {
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
-                                        <p className="text-xl">
-                                    <span>a</span> 
-                                    <span style={{color:" rgb(159, 159, 159)"}}>i</span>
-                                    <span style={{}}>   dashboard</span>
+                                <p className="text-xl">
+                                    Dashboard
                                 </p>                            
                             </div>
 
@@ -29,7 +27,7 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('articles.index')} active={route().current('articles.index')}>
                                     Articoli
                                 </NavLink>
-                                <NavLink href={route('articles.index')} active={route().current('project.index')}>
+                                <NavLink href={route('projects.index')} active={route().current('projects.index')}>
                                     Progetti
                                 </NavLink>
                             </div>

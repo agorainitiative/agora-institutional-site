@@ -29,7 +29,6 @@ export default function Create({auth}) {
                 </header>
                 <main>
                     <form onSubmit={handleSubmit} className="max-w-lg">
-                        {/* Campi esistenti */}
                         <div className="mb-4">
                             <label className="block text-gray-700">Title</label>
                             <input 
@@ -40,15 +39,14 @@ export default function Create({auth}) {
                             />
                             {errors.title && <div className="text-red-500 mt-1">{errors.title}</div>}
                         </div>
-                        <div>
-                            <label htmlFor="on_trending">On Trending</label>
-                            <input
-                                type="checkbox"
-                                id="on_trending"
-                                name="on_trending"
-                                checked={data.on_trending}
-                                onChange={e => setData('on_trending', e.target.checked)}
+                        <div className="mb-4">
+                            <label className="block text-gray-700">Abstract</label>
+                            <textarea 
+                                value={data.abstract} 
+                                onChange={e => setData('abstract', e.target.value)}
+                                className="mt-1 block w-full"
                             />
+                            {errors.abstract && <div className="text-red-500 mt-1">{errors.abstract}</div>}
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700">Content</label>
@@ -62,16 +60,8 @@ export default function Create({auth}) {
                                 style={{ height: '500px' }}
                             />
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700">Abstract</label>
-                            <textarea 
-                                value={data.abstract} 
-                                onChange={e => setData('abstract', e.target.value)}
-                                className="mt-1 block w-full"
-                            />
-                            {errors.abstract && <div className="text-red-500 mt-1">{errors.abstract}</div>}
-                        </div>
-                        <button type="submit" disabled={processing} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        
+                        <button type="submit" disabled={processing} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             Submit
                         </button>
                     </form>
